@@ -5,14 +5,16 @@
   "main": "./lib/hello.js",
   "bin" : {"hello" : "./bin/hello.js"},
   "scripts": {
-    "test": "node ./test/hello.js"
+    "test": "node ./request_url.js"
   },
   "author": "feifeigd",
   "license": "ISC",
   "bugs" : {
 	  "email" : "502207456@qq.com"
   },
+  // 通过 npm install 安装依赖模块
   "dependencies" : {
-    "connect" : "2.0.1"
+    "connect" : "2.0.1",
+    "underscore" : ""
   }
 }
