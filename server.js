@@ -3,6 +3,8 @@ var http = require('http'),
 	url = require('url'),
 	fs = require('fs');
 
+var log = console.log;
+
 var server = http.createServer(function(req, res){
 	var pathname = url.parse(req.url).pathname;
 	if(pathname === '/'){
@@ -23,7 +25,13 @@ var server = http.createServer(function(req, res){
 });
 
 server.listen(3000);
+log('Server running at http://127.0.0.1:3000/');
 
 var io = require('socket.io').listen(server);
 
-console.log('Server running at http://127.0.0.1:3000/');
+io.sockets.on('connection', function(socket){
+	log('User connected');
+	socket.on('disconnect', function(){
+		log('User disconnected');
+	});
+});
