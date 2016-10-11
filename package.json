@@ -15,6 +15,7 @@
 
 	"dependencies" : {
 		"connect" : "2.0.1",
-		"underscore" : ""
+		"underscore" : "",
+		"socket.io":""
 	}
 }
