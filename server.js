@@ -3,7 +3,7 @@ var http = require('http'),
 	url = require('url'),
 	fs = require('fs');
 
-var s = http.createServer(function(req, res){
+var server = http.createServer(function(req, res){
 	var pathname = url.parse(req.url).pathname;
 	if(pathname === '/'){
 		fs.readFile('./index.html', function(error, data){
@@ -22,5 +22,8 @@ var s = http.createServer(function(req, res){
 	}
 });
 
-s.listen(3000);
+server.listen(3000);
+
+var io = require('socket.io').listen(server);
+
 console.log('Server running at http://127.0.0.1:3000/');
