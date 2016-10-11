@@ -1,12 +1,15 @@
 
 var http = require('http'),
-	url = require('url');
+	url = require('url'),
+	fs = require('fs');
 
 var s = http.createServer(function(req, res){
 	var pathname = url.parse(req.url).pathname;
 	if(pathname === '/'){
-		res.writeHead(200, {'Content-Type':'text/plain'});
-		res.end('Home Page\n');
+		fs.readFile('./index.html', function(error, data){
+			res.writeHead(200, {'Content-Type':'text/html'});
+			res.end(data, 'utf-8');
+		});
 	}else if(pathname === '/about'){
 		res.writeHead(200, {'Content-Type':'text/plain'});
 		res.end('About Us\n');		
